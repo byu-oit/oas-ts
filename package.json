@@ -1,5 +1,5 @@
 {
-  "name": "oas-decorators",
+  "name": "oas-ts",
   "version": "0.0.0",
   "description": "Decorators for creating OpenAPI documents",
   "scripts": {
