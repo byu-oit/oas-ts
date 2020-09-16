@@ -17,7 +17,7 @@
     "types",
     "swagger"
   ],
-  "author": "Spencer Tuft <spencer.tuft@gmail.com>",
+  "author": "Spencer Tuft <stuft2@byu.edu>",
   "license": "Apache-2.0",
   "files": [
     "openapi.d.ts",
