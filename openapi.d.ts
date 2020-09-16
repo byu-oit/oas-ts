@@ -1,4 +1,4 @@
-export interface OpenAPIObject {
+export interface OpenAPIObject extends SpecificationExtensions {
     openapi: string
     info: InfoObject
     servers?: ServerObject[]
@@ -186,44 +186,44 @@ export interface ReferenceObject {
 }
 
 export interface SchemaObject extends SpecificationExtensions {
-    nullable?: boolean;
+    nullable?: boolean
     discriminator?: DiscriminatorObject
-    readOnly?: boolean;
-    writeOnly?: boolean;
-    xml?: XmlObject;
-    externalDocs?: ExternalDocumentationObject;
-    example?: unknown;
-    examples?: unknown[];
-    deprecated?: boolean;
+    readOnly?: boolean
+    writeOnly?: boolean
+    xml?: XmlObject
+    externalDocs?: ExternalDocumentationObject
+    example?: unknown
+    examples?: unknown[]
+    deprecated?: boolean
 
-    type?: string;
-    allOf?: (SchemaObject | ReferenceObject)[];
-    oneOf?: (SchemaObject | ReferenceObject)[];
-    unknownOf?: (SchemaObject | ReferenceObject)[];
-    not?: SchemaObject | ReferenceObject;
-    items?: SchemaObject | ReferenceObject;
+    type?: string
+    allOf?: (SchemaObject | ReferenceObject)[]
+    oneOf?: (SchemaObject | ReferenceObject)[]
+    unknownOf?: (SchemaObject | ReferenceObject)[]
+    not?: SchemaObject | ReferenceObject
+    items?: SchemaObject | ReferenceObject
     properties?: Record<string, SchemaObject | ReferenceObject>
     additionalProperties?: (SchemaObject | ReferenceObject | boolean)
-    description?: string;
-    format?: string;
-    default?: unknown;
+    description?: string
+    format?: string
+    default?: unknown
 
-    title?: string;
-    multipleOf?: number;
-    maximum?: number;
-    exclusiveMaximum?: boolean;
-    minimum?: number;
-    exclusiveMinimum?: boolean;
-    maxLength?: number;
-    minLength?: number;
-    pattern?: string;
-    maxItems?: number;
-    minItems?: number;
-    uniqueItems?: boolean;
-    maxProperties?: number;
-    minProperties?: number;
-    required?: string[];
-    enum?: unknown[];
+    title?: string
+    multipleOf?: number
+    maximum?: number
+    exclusiveMaximum?: boolean
+    minimum?: number
+    exclusiveMinimum?: boolean
+    maxLength?: number
+    minLength?: number
+    pattern?: string
+    maxItems?: number
+    minItems?: number
+    uniqueItems?: boolean
+    maxProperties?: number
+    minProperties?: number
+    required?: string[]
+    enum?: unknown[]
 }
 
 export interface DiscriminatorObject {
@@ -232,11 +232,11 @@ export interface DiscriminatorObject {
 }
 
 export interface XmlObject {
-    name?: string;
-    namespace?: string;
-    prefix?: string;
-    attribute?: boolean;
-    wrapped?: boolean;
+    name?: string
+    namespace?: string
+    prefix?: string
+    attribute?: boolean
+    wrapped?: boolean
 }
 
 export interface SecuritySchemeObject extends SpecificationExtensions {
