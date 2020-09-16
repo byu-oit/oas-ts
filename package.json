@@ -29,5 +29,16 @@
     "@typescript-eslint/parser": "^4.1.1",
     "eslint": "^7.9.0",
     "typescript": "^4.0.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ]
   }
 }
