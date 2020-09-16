@@ -1,3 +1,6 @@
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#swagger-object
+ */
 export interface SwaggerObject extends SpecificationExtensions {
     swagger: string
     info: InfoObject
@@ -8,14 +11,17 @@ export interface SwaggerObject extends SpecificationExtensions {
     produces?: string[]
     paths: PathsObject
     definitions?: DefinitionsObject
-    parameters?: ParametersDefinitionObject
-    responses?: ResponsesDefinitionObject
+    parameters?: ParametersDefinitionsObject
+    responses?: ResponsesDefinitionsObject
     securityDefinitions?: SecurityDefinitionsObject
     security?: SecurityRequirementObject[]
     tags?: TagObject[]
     externalDocs?: ExternalDocumentationObject
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#info-object
+ */
 export interface InfoObject extends SpecificationExtensions {
     title: string
     description?: string
@@ -25,21 +31,33 @@ export interface InfoObject extends SpecificationExtensions {
     version: string
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#contact-object
+ */
 export interface ContactObject extends SpecificationExtensions {
     name?: string
     url?: string
     email?: string
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#license-object
+ */
 export interface LicenseObject extends SpecificationExtensions {
     name: string
     url?: string
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#paths-object
+ */
 export interface PathsObject extends SpecificationExtensions {
     [path: string]: PathItemObject
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#path-item-object
+ */
 export interface PathItemObject extends SpecificationExtensions {
     $ref?: string
     get?: OperationObject
@@ -52,6 +70,9 @@ export interface PathItemObject extends SpecificationExtensions {
     parameters?: (ParameterObject | ReferenceObject)[]
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#operation-object
+ */
 export interface OperationObject extends SpecificationExtensions {
     tags?: string[]
     summary?: string
@@ -61,13 +82,23 @@ export interface OperationObject extends SpecificationExtensions {
     consumes?: string[]
     produces?: string[]
     parameters?: (ParameterObject | ReferenceObject)[]
+    responses?: ResponsesObject
+    schemes?: string[]
+    deprecated?: boolean
+    security?: SecurityRequirementObject[]
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#external-documentation-object
+ */
 export interface ExternalDocumentationObject extends SpecificationExtensions {
     description?: string
     url: string
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#parameter-object
+ */
 export type ParameterObject = (ParameterBodyObject | ParameterOtherObject) & SpecificationExtensions
 
 export interface ParameterBaseObject {
@@ -105,6 +136,9 @@ export interface ParameterOtherObject extends ParameterBaseObject{
     multipleOf?: number
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#items-object
+ */
 export interface ItemsObject extends SpecificationExtensions {
     type: 'string' | 'number' | 'integer' | 'boolean' | 'array' | 'object'
     format?: string
@@ -125,11 +159,17 @@ export interface ItemsObject extends SpecificationExtensions {
     multipleOf?: number
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#responses-object
+ */
 export interface ResponsesObject {
     default?: ResponseObject | ReferenceObject
     [httpStatus: string]: ResponseObject | ReferenceObject
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#response-object
+ */
 export interface ResponseObject extends SpecificationExtensions {
     description: string
     schema?: SchemaObject
@@ -137,14 +177,23 @@ export interface ResponseObject extends SpecificationExtensions {
     examples?: ExampleObject
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#headers-object
+ */
 export interface HeadersObject {
     [name: string]: HeaderObject
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#example-object
+ */
 export interface ExampleObject<T = unknown> {
     [mimeType: string]: T
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#header-object
+ */
 export interface HeaderObject extends SpecificationExtensions {
     description?: string
     type: 'string' | 'number' | 'integer' | 'boolean' | 'array'
@@ -166,16 +215,25 @@ export interface HeaderObject extends SpecificationExtensions {
     multipleOf?: number
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#tag-object
+ */
 export interface TagObject extends SpecificationExtensions {
     name: string
     description?: string
     externalDocs?: ExternalDocumentationObject
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#reference-object
+ */
 export interface ReferenceObject {
     $ref: string
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#schema-object
+ */
 export interface SchemaObject extends SpecificationExtensions {
     $ref?: string
     format?: string
@@ -212,6 +270,9 @@ export interface SchemaObject extends SpecificationExtensions {
     example?: unknown
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#xml-object
+ */
 export interface XmlObject extends SpecificationExtensions {
     name?: string
     namespace?: string
@@ -220,14 +281,29 @@ export interface XmlObject extends SpecificationExtensions {
     wrapped?: boolean
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#definitions-object
+ */
 export type DefinitionsObject = Record<string, SchemaObject | ReferenceObject>
 
-export type ParametersDefinitionObject = Record<string, ParameterObject | ReferenceObject>
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#parameters-definitions-object
+ */
+export type ParametersDefinitionsObject = Record<string, ParameterObject | ReferenceObject>
 
-export type ResponsesDefinitionObject = Record<string, ResponseObject | ReferenceObject>
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#responses-definitions-object
+ */
+export type ResponsesDefinitionsObject = Record<string, ResponseObject | ReferenceObject>
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#security-definitions-object
+ */
 export type SecurityDefinitionsObject = Record<string, SecuritySchemeObject>
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#security-scheme-object
+ */
 export interface SecuritySchemeObject extends SpecificationExtensions {
     type: 'basic' | 'apiKey' | 'oauth2'
     description?: string
@@ -239,12 +315,21 @@ export interface SecuritySchemeObject extends SpecificationExtensions {
     scopes: ScopesObject
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#scopes-object
+ */
 export interface ScopesObject extends SpecificationExtensions{
     [name: string]: string
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#secuirty-requirement-object
+ */
 export interface SecurityRequirementObject {
     [name: string]: string[]
 }
 
+/**
+ * Doc: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#specification-extensions
+ */
 export type SpecificationExtensions<T = unknown> = Record<string, T>
