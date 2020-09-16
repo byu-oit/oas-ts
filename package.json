@@ -1,7 +1,7 @@
 {
   "name": "@byu-oit/oas-ts",
   "version": "0.0.0",
-  "description": "Decorators for creating OpenAPI documents",
+  "description": "Typescript definitions for the OpenAPI (and Swagger 2.0) specification",
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "tsc"
