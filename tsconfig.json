@@ -4,15 +4,13 @@
     "module": "CommonJS",
     "noImplicitAny": false,
     "removeComments": true,
-    "noEmit": true,
-    "outDir": "dist",
-    "rootDir": "src"
+    "noEmit": true
   },
   "compileOnSave": true,
   "buildOnSave": true,
-  "files": [
-    "index.d.ts",
+  "include": [
     "openapi.d.ts",
-    "swagger.d.ts"
+    "swagger.d.ts",
+    "test/**/*"
   ]
 }

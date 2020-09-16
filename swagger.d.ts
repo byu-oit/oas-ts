@@ -49,7 +49,7 @@ export interface PathItemObject extends SpecificationExtensions {
     options?: OperationObject
     head?: OperationObject
     patch?: OperationObject
-    parameters?: (ParametersDefinitionObject | ReferenceObject)[]
+    parameters?: (ParameterObject | ReferenceObject)[]
 }
 
 export interface OperationObject extends SpecificationExtensions {
@@ -60,7 +60,7 @@ export interface OperationObject extends SpecificationExtensions {
     operationId?: string
     consumes?: string[]
     produces?: string[]
-    parameters?: ParametersDefinitionObject
+    parameters?: (ParameterObject | ReferenceObject)[]
 }
 
 export interface ExternalDocumentationObject extends SpecificationExtensions {
@@ -68,7 +68,7 @@ export interface ExternalDocumentationObject extends SpecificationExtensions {
     url: string
 }
 
-export type ParameterObject = ParameterBaseObject & (ParameterBodyObject | ParameterOtherObject) & SpecificationExtensions
+export type ParameterObject = (ParameterBodyObject | ParameterOtherObject) & SpecificationExtensions
 
 export interface ParameterBaseObject {
     name: string
@@ -77,12 +77,12 @@ export interface ParameterBaseObject {
     required?: boolean
 }
 
-export interface ParameterBodyObject {
+export interface ParameterBodyObject extends ParameterBaseObject{
     in: 'body'
     schema: SchemaObject
 }
 
-export interface ParameterOtherObject {
+export interface ParameterOtherObject extends ParameterBaseObject{
     in: 'query' | 'header' | 'path' | 'formData'
 
     type: 'string' | 'number' | 'integer' | 'boolean' | 'array' | 'file'
@@ -105,10 +105,8 @@ export interface ParameterOtherObject {
     multipleOf?: number
 }
 
-export type ParameterIn = 'query' | 'header' | 'path' | 'formData' | 'body'
-
 export interface ItemsObject extends SpecificationExtensions {
-    type: 'string' | 'number' | 'integer' | 'boolean' | 'array'
+    type: 'string' | 'number' | 'integer' | 'boolean' | 'array' | 'object'
     format?: string
     items?: ItemsObject
     collectionFormat?: 'csv' | 'ssv' | 'tsv' | 'pipes'
@@ -179,7 +177,7 @@ export interface ReferenceObject {
 }
 
 export interface SchemaObject extends SpecificationExtensions {
-    $ref?: ReferenceObject
+    $ref?: string
     format?: string
     title?: string
     description?: string
@@ -198,14 +196,14 @@ export interface SchemaObject extends SpecificationExtensions {
     uniqueItems?: boolean
     maxProperties?: number
     minProperties?: number
-    required?: boolean
+    required?: string[]
     enum?: unknown[]
-    type?: 'string' | 'number' | 'integer' | 'boolean' | 'array'
+    type?: 'string' | 'number' | 'integer' | 'boolean' | 'array' | 'object'
 
-    items?: ItemsObject
+    items?: ItemsObject | ReferenceObject
     allOf?: (SchemaObject | ReferenceObject)[]
     properties?: DefinitionsObject
-    additionalProperties?: DefinitionsObject
+    additionalProperties?: (SchemaObject | ReferenceObject | boolean)
 
     discriminator?: string
     readonly?: boolean
@@ -222,11 +220,11 @@ export interface XmlObject extends SpecificationExtensions {
     wrapped?: boolean
 }
 
-export type DefinitionsObject = Record<string, SchemaObject>
+export type DefinitionsObject = Record<string, SchemaObject | ReferenceObject>
 
-export type ParametersDefinitionObject = Record<string, ParameterObject>
+export type ParametersDefinitionObject = Record<string, ParameterObject | ReferenceObject>
 
-export type ResponsesDefinitionObject = Record<string, ResponseObject>
+export type ResponsesDefinitionObject = Record<string, ResponseObject | ReferenceObject>
 
 export type SecurityDefinitionsObject = Record<string, SecuritySchemeObject>
 

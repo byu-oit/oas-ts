@@ -4,7 +4,7 @@
   "description": "Decorators for creating OpenAPI documents",
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "test": "tsc --noEmit"
+    "test": "tsc"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,6 @@
   "author": "Spencer Tuft <spencer.tuft@gmail.com>",
   "license": "Apache-2.0",
   "files": [
-    "index.d.ts",
     "openapi.d.ts",
     "swagger.d.ts"
   ],
