@@ -1,3 +1,6 @@
+/**
+ * Latest documentation found at https://swagger.io/specification/
+ */
 export interface OpenAPIObject extends SpecificationExtensions {
     openapi: string
     info: InfoObject
