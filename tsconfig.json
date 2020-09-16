@@ -1,23 +1,18 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "target": "ESNext",
     "module": "CommonJS",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "sourceMap": true,
     "noImplicitAny": false,
     "removeComments": true,
-    "preserveConstEnums": true,
-    "noEmitHelpers": true,
+    "noEmit": true,
     "outDir": "dist",
     "rootDir": "src"
   },
   "compileOnSave": true,
   "buildOnSave": true,
-  "include": [
-    "**/*.spec.ts",
-    "dist",
-    "node_modules"
+  "files": [
+    "index.d.ts",
+    "openapi.d.ts",
+    "swagger.d.ts"
   ]
 }

@@ -2,10 +2,9 @@
   "name": "oas-decorators",
   "version": "0.0.0",
   "description": "Decorators for creating OpenAPI documents",
-  "types": "openapi.d.ts",
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -20,9 +19,14 @@
   ],
   "author": "Spencer Tuft <spencer.tuft@gmail.com>",
   "license": "Apache-2.0",
+  "files": [
+    "index.d.ts",
+    "openapi.d.ts",
+    "swagger.d.ts"
+  ],
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.1.0",
-    "@typescript-eslint/parser": "^4.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
     "eslint": "^7.9.0",
     "typescript": "^4.0.2"
   }
