@@ -5,7 +5,7 @@ Typescript definitions for the OpenAPI (and Swagger 2.0) specification.
 ## Install
 
 ```
-npm i @byu-oit
+npm i @byu-oit/oas-ts
 ```
 
 ## Usage
